@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERP-Nav | Phase 1 MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <h1>ERP-Nav</h1>
+        <p class="tagline">
+          A neutral ERP marketplace to learn, assess, compare, and connect with vetted implementation partners.
+        </p>
+        <p>
+          Phase 1 MVP: Education + Assessment + Calculators + Vendor Matrix + Partner Leads + RFP Generator.
+        </p>
+        <a href="#assessment" class="btn">Start Readiness Assessment</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="vendors">
+        <h2>Included Vendors/OEMs</h2>
+        <ul class="vendor-list" id="vendorList"></ul>
+      </section>
+
+      <section id="education">
+        <h2>ERP 101 & Discovery</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Why ERP?</h3>
+            <p>
+              ERP connects finance, sales, procurement, inventory, manufacturing, and reporting into one platform for better control and visibility.
+            </p>
+          </article>
+          <article class="card">
+            <h3>How to Choose</h3>
+            <p>
+              Start with process fit, total cost of ownership, integration complexity, timeline, and implementation partner quality.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="assessment">
+        <h2>ERP Readiness Assessment (Lead Capture)</h2>
+        <form id="assessmentForm" class="card form-grid">
+          <label>Work Email <input type="email" id="email" required /></label>
+          <label>Company Name <input type="text" id="company" required /></label>
+          <label>Employees
+            <select id="employees" required>
+              <option value="">Select</option>
+              <option value="10">10-50</option>
+              <option value="25">51-200</option>
+              <option value="40">201-1000</option>
+              <option value="55">1000+</option>
+            </select>
+          </label>
+          <label>Current Systems Complexity (1-5) <input type="number" id="complexity" min="1" max="5" required /></label>
+          <label>Data Quality (1-5) <input type="number" id="dataQuality" min="1" max="5" required /></label>
+          <label>Process Standardization (1-5) <input type="number" id="processMaturity" min="1" max="5" required /></label>
+          <button type="submit" class="btn">Generate Readiness Snapshot</button>
+        </form>
+        <div id="assessmentResult" class="result"></div>
+      </section>
+
+      <section id="calculators">
+        <h2>TCO + ROI Calculator</h2>
+        <form id="calcForm" class="card form-grid">
+          <label>Users <input type="number" id="users" min="1" value="50" required /></label>
+          <label>Monthly License / User (₹) <input type="number" id="licenseCost" min="0" value="4500" required /></label>
+          <label>Implementation Cost (₹) <input type="number" id="implementationCost" min="0" value="1200000" required /></label>
+          <label>Integration + Migration (₹) <input type="number" id="integrationCost" min="0" value="350000" required /></label>
+          <label>Annual Support (₹) <input type="number" id="supportCost" min="0" value="240000" required /></label>
+          <label>Estimated Annual Savings (₹) <input type="number" id="annualSavings" min="0" value="1800000" required /></label>
+          <button type="submit" class="btn">Calculate</button>
+        </form>
+        <div id="calcResult" class="result"></div>
+      </section>
+
+      <section id="matrix">
+        <h2>Feature Parity Matrix (Phase 1)</h2>
+        <div class="table-wrap">
+          <table id="featureTable">
+            <thead>
+              <tr>
+                <th>Vendor</th>
+                <th>Finance</th>
+                <th>Inventory</th>
+                <th>Procurement</th>
+                <th>Manufacturing</th>
+                <th>CRM</th>
+                <th>Analytics</th>
+                <th>Global Ops</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="partners">
+        <h2>Implementation Partner Directory</h2>
+        <label>Filter by Industry
+          <select id="industryFilter">
+            <option value="all">All</option>
+            <option value="Manufacturing">Manufacturing</option>
+            <option value="Retail">Retail</option>
+            <option value="Services">Services</option>
+            <option value="SaaS">SaaS</option>
+          </select>
+        </label>
+        <div id="partnerCards" class="grid-3"></div>
+
+        <form id="partnerLeadForm" class="card form-grid">
+          <h3>Contact a Partner</h3>
+          <label>Your Name <input type="text" id="leadName" required /></label>
+          <label>Your Email <input type="email" id="leadEmail" required /></label>
+          <label>Preferred Vendor
+            <select id="leadVendor"></select>
+          </label>
+          <label>Project Summary
+            <textarea id="leadSummary" rows="4" required></textarea>
+          </label>
+          <button class="btn" type="submit">Submit Lead</button>
+        </form>
+        <div id="leadResult" class="result"></div>
+      </section>
+
+      <section id="rfp">
+        <h2>RFP Generator</h2>
+        <form id="rfpForm" class="card form-grid">
+          <label>Project Name <input type="text" id="rfpProject" required /></label>
+          <label>Industry <input type="text" id="rfpIndustry" required /></label>
+          <label>Required Modules (comma separated)
+            <input type="text" id="rfpModules" placeholder="Finance, Inventory, Procurement" required />
+          </label>
+          <label>Target Go-Live (Month/Year) <input type="text" id="rfpGoLive" required /></label>
+          <button class="btn" type="submit">Generate RFP Draft</button>
+          <button class="btn secondary" type="button" id="downloadRfp">Download .txt</button>
+        </form>
+        <pre id="rfpOutput" class="result pre"></pre>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
