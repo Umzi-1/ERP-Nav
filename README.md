@@ -52,4 +52,4 @@ Then open <http://localhost:8080>.
 - Verified partner workflow + KYC
 - Escrow contracts and milestone billing
 - Bidding flows and partner subscriptions
-- AI copilot and deeper data integrations
+- AI copilot and deeper data integrations.
